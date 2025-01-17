@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queen Vee Chess Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Dark/Light Mode Toggle -->
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <header>
+        <nav>
+          <!-- Left Side: Logo and Text -->
+          <div class="logo-container">
+            <img src="logo.png" alt="Queen Vee Chess Academy Logo" class="logo-img">
+            <span class="logo-text"><b>Queen Vee Chess Academy</b></span>
+          </div>
+      
+          <!-- Hamburger Menu Icon (Mobile Only) -->
+          <div class="hamburger" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+      
+          <!-- Right Side: Navigation Links -->
+          <ul class="nav-links">
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#blog" onclick="toggleMenu()">Blog</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            <li><a href="#donate" class="btn donate-btn" onclick="toggleMenu()">Donate</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+      <script>
+        function toggleMenu() {
+          const navLinks = document.querySelector('.nav-links');
+          const hamburger = document.querySelector('.hamburger');
+          navLinks.classList.toggle('active');
+          hamburger.classList.toggle('active');
+        }
+      </script>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-overlay"></div> <!-- Overlay for reduced opacity -->
+      <div class="hero-content">
+          <h1><b>Empowering Displaced Children, One Move at a Time</b></h1>
+          <p><b>Transforming lives through the power of chess.</b></p>
+          <div class="cta-buttons">
+              <a href="#donate" class="btn">Support Us</a>
+              <a href="#about" class="btn btn-outline">Learn More</a>
+          </div>
+      </div>
+  </section>
+
+   <!-- About Section -->
+<section id="about" class="about">
+    <!-- Left Arrow -->
+    <div class="arrow left-arrow" onclick="prevSlide()">
+      <i class="fas fa-chevron-left"></i>
+    </div>
+  
+    <!-- Slides Container -->
+    <div class="slides">
+      <!-- Slide 1: Who We Are -->
+      <div class="slide active">
+        <div class="image-container" style="background-image: url('slide1.jpg');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <h3>Who We Are</h3>
+          <p>At Queen Vee Chess Academy, we are dedicated to transforming lives through the power of chess. Founded with the belief that every child deserves a chance to thrive, we empower internally displaced children in Northern Nigeria with strategic thinking, emotional resilience, and a renewed sense of hope.</p>
+        </div>
+      </div>
+  
+      <!-- Slide 2: What We Do -->
+      <div class="slide">
+        <div class="image-container" style="background-image: url('slide2.jpg');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <h3>What We Do</h3>
+          <p>Through our flagship program, the Chess in IDP Camps Initiative, we use chess as a tool to address trauma, enhance critical thinking, and foster belonging among children affected by displacement. Our work is grounded in the idea that chess can be more than a game—it can be a pathway to healing and growth.</p>
+        </div>
+      </div>
+  
+      <!-- Slide 3: Our Impact -->
+      <div class="slide">
+        <div class="image-container" style="background-image: url('slide3.jpg');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <h3>Our Impact</h3>
+          <ul>
+            <li>Helped 50 children return to school.</li>
+            <li>Supported four boys from IDP camps to represent Adamawa State at the National Youth Games, with one placing 4th on Board 4.</li>
+            <li>Created an environment where displaced children can learn, heal, and dream beyond their current circumstances.</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Slide 4: Our Vision & Mission -->
+      <div class="slide">
+        <div class="image-container" style="background-image: url('slide4.jpg');"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <h3>Our Vision</h3>
+          <p>We envision a world where every child, regardless of their background, has the opportunity to grow, thrive, and redefine their narrative.</p>
+          <h3>Our Mission</h3>
+          <p>To empower displaced children through chess and education, fostering resilience, critical thinking, and a brighter future.</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Right Arrow -->
+    <div class="arrow right-arrow" onclick="nextSlide()">
+      <i class="fas fa-chevron-right"></i>
+    </div>
+  </section>
+<!-- Blog Section -->
+<section id="blog" class="blog">
+    <h2>Blog</h2>
+    <div class="blog-posts">
+        <!-- Single Blog Post -->
+        <div class="blog-post">
+            <img src="blog1.jpg" alt="Chess Strategies for Beginners" class="blog-image">
+            <div class="blog-content">
+                <h3>Empowering Minds</h3>
+                <p>Queen Vee Chess Academy’s Mission to Help IDP Kids Through Chess</p>
+                <a href="blog-post1.html" class="btn">Read More</a> <!-- Link to blog post 1 -->
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Gallery Section -->
+  <section id="gallery" class="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="image1.jpg" alt="Gallery Image 1"></div>
+        <div class="gallery-item"><img src="image2.jpg" alt="Gallery Image 2"></div>
+        <div class="gallery-item"><img src="image3.jpg" alt="Gallery Image 3"></div>
+        <div class="gallery-item"><img src="image4.jpg" alt="Gallery Image 4"></div>
+        <div class="gallery-item"><img src="image5.jpg" alt="Gallery Image 5"></div>
+        <div class="gallery-item"><img src="image6.jpg" alt="Gallery Image 6"></div>
+        <div class="gallery-item"><img src="image7.jpg" alt="Gallery Image 7"></div>
+        <div class="gallery-item"><img src="image8.jpg" alt="Gallery Image 8"></div>
+    </div>
+</section>
+
+   <!-- Donate Section -->
+<section id="donate" class="donate">
+    <div class="donate-content">
+      <h2><b>Support Us</b></h2>
+      <p><b>
+        The Gift of Chess global ambassador for Nigeria and QueenVee raise funds for our Chess in Internally Displaced Persons (IDP) camp program. Internally Displaced Children (IDP kids) are children that were forced to leave their homes due to insurgency in North East Nigeria. QueenVee Chess Academy Yola, created in 2021, is an organization using the game of chess to help these children through situations of uncertainty, to give them access to quality education, to occupy their minds in a positive way, and to give them access to opportunities in life. We have about 7 IDP camps in Adamawa State alone, with over 500 displaced kids in each of these camps, and we have IDP camps in almost all the 19 states in Northern Nigeria.
+        We are currently trying to reach other young chess players outside their IDP camps and also to give them quality education through scholarships. We have been able to enroll 11 of them into secondary school.
+      </p>
+      <a href="https://www.gofundme.com/f/internally-displaced-children-in-northern-nigeria?utm_campaign=p_cp+fundraiser-sidebar&utm_medium=copy_link_all&utm_source=customer" class="btn donate-btn" target="_blank" onclick="alert('Thank you for your support!');">Donate</a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or would like to get involved, please reach out to us.</p>
+  
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <form action="https://formsubmit.co/your-email@example.com" method="POST">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+  
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <p>Email: <a href="mailto:info@queenveechess.org">info@queenveechess.org</a></p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>Address: 123 Chess Street, Yola, Nigeria</p>
+        </div>
+        <div class="social-links">
+          <a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://twitter.com/yourpage" target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://instagram.com/yourpage" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  
+  </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Queen Vee Chess Academy. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
