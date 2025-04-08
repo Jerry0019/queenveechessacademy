@@ -451,22 +451,24 @@ body.dark-mode .decor-icon {
     }
 }
 
-/* Ensure About selectors stay on the same line on mobile */
 @media (max-width: 768px) {
     .about-selectors {
-        flex-wrap: nowrap; /* Prevent wrapping */
-        overflow-x: auto; /* Allow horizontal scrolling if needed */
-        justify-content: flex-start; /* Align left, scrollable if overflowing */
-        gap: 8px; /* Reduce gap for tighter fit */
-        padding-bottom: 5px; /* Add padding for scrollbar visibility */
-        white-space: nowrap; /* Keep text on one line */
+        gap: 10px;
+        margin-bottom: 10px; /* Reduced from 15px to 10px */
+        flex-wrap: wrap;
     }
-}
-
-@media (max-width: 480px) {
     .about-selector {
-        font-size: 0.8rem; /* Even smaller for very small screens */
-        padding: 4px 6px;
+        font-size: 1rem;
+    }
+    .about-text-block h3 {
+        font-size: 1.6rem;
+    }
+    .about-text-block p {
+        font-size: 0.95rem;
+    }
+    #about {
+        padding-top: 70px;
+        padding-bottom: 20px; /* Reduced from 30px to 20px */
     }
 }
 
@@ -1493,7 +1495,7 @@ body.dark-mode .program-content p {
                     <img src="news5.png" alt="Newspaper 1">
                 </a>
                 <a href="https://leadership.ng/yola-idp-girl-wins-silver-medal-at-us-chess-tournament/" target="_blank" class="logo-item">
-                    <img src="news6.png" alt="Newspaper 1">
+                    <img src="news5.png" alt="Newspaper 1">
                 </a>
                 <a href="https://www.thisdaylive.com/index.php/2023/10/14/queen-vee-chess-academy-helping-idp-kids-to-play/" target="_blank" class="logo-item">
                     <img src="news2.png" alt="Newspaper 2">
@@ -1599,7 +1601,12 @@ body.dark-mode .program-content p {
         }
 
         hamburger.addEventListener('click', toggleMenu);
-      
+        // Close menu if clicking outside of it (optional)
+        // document.addEventListener('click', function(event) {
+        //     if (!header.contains(event.target) && navLinks.classList.contains('active')) {
+        //         closeMenu();
+        //     }
+        // });
 
 
         // --- About Section Slider ---
@@ -1667,7 +1674,9 @@ body.dark-mode .program-content p {
                         loader.classList.remove('active');
                     }, 750); // Adjust delay (in milliseconds) as needed
                 }
-                
+                // Note: For external links or the donate button leading off-site,
+                // the loader might show briefly before the page unloads, which is acceptable.
+                // Close mobile menu if open
                 closeMenu();
             });
         });
@@ -1801,8 +1810,7 @@ document.addEventListener('keydown', (e) => {
         startAboutInterval(); // Start auto-advancing
 
 
-     
-    
+       
     </script>
 </body>
 </html>
