@@ -451,24 +451,28 @@ body.dark-mode .decor-icon {
     }
 }
 
+/* Ensure About selectors stay on the same line on mobile */
 @media (max-width: 768px) {
     .about-selectors {
-        gap: 10px;
-        margin-bottom: 10px; /* Reduced from 15px to 10px */
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+        justify-content: flex-start; /* Align left, scrollable if overflowing */
+        gap: 8px; /* Reduce gap for tighter fit */
+        padding-bottom: 5px; /* Add padding for scrollbar visibility */
+        white-space: nowrap; /* Keep text on one line */
     }
+
     .about-selector {
-        font-size: 1rem;
+        font-size: 0.9rem; /* Slightly smaller font for fit */
+        padding: 5px 8px; /* Reduce padding for compactness */
+        flex-shrink: 0; /* Prevent buttons from shrinking */
     }
-    .about-text-block h3 {
-        font-size: 1.6rem;
-    }
-    .about-text-block p {
-        font-size: 0.95rem;
-    }
-    #about {
-        padding-top: 70px;
-        padding-bottom: 20px; /* Reduced from 30px to 20px */
+}
+
+@media (max-width: 480px) {
+    .about-selector {
+        font-size: 0.8rem; /* Even smaller for very small screens */
+        padding: 4px 6px;
     }
 }
 
@@ -1601,12 +1605,7 @@ body.dark-mode .program-content p {
         }
 
         hamburger.addEventListener('click', toggleMenu);
-        // Close menu if clicking outside of it (optional)
-        // document.addEventListener('click', function(event) {
-        //     if (!header.contains(event.target) && navLinks.classList.contains('active')) {
-        //         closeMenu();
-        //     }
-        // });
+      
 
 
         // --- About Section Slider ---
@@ -1674,9 +1673,7 @@ body.dark-mode .program-content p {
                         loader.classList.remove('active');
                     }, 750); // Adjust delay (in milliseconds) as needed
                 }
-                // Note: For external links or the donate button leading off-site,
-                // the loader might show briefly before the page unloads, which is acceptable.
-                // Close mobile menu if open
+                
                 closeMenu();
             });
         });
@@ -1810,19 +1807,8 @@ document.addEventListener('keydown', (e) => {
         startAboutInterval(); // Start auto-advancing
 
 
-        // --- REMOVE OLD SLIDER JS ---
-        // Make sure you remove or comment out the previous JS related to
-        // #slides, nextSlide(), prevSlide() if they were targeting the old about section.
-        // Example:
-        /*
-        const slidesContainer = document.getElementById('slides');
-        if (slidesContainer) { // Check if slider exists
-            // ... OLD SLIDER CODE HERE ...
-        }
-        // Remove or comment out:
-        // window.nextSlide = ...
-        // window.prevSlide = ...
-        */
+     
+    
     </script>
 </body>
 </html>
