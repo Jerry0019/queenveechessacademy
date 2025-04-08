@@ -1588,7 +1588,8 @@ body.dark-mode .program-content p {
         function toggleMenu() {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
-           
+            // Optional: Lock body scroll when menu is open
+            // bodyForMenu.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
         }
 
         function closeMenu() {
@@ -1600,7 +1601,12 @@ body.dark-mode .program-content p {
         }
 
         hamburger.addEventListener('click', toggleMenu);
-        
+        // Close menu if clicking outside of it (optional)
+        // document.addEventListener('click', function(event) {
+        //     if (!header.contains(event.target) && navLinks.classList.contains('active')) {
+        //         closeMenu();
+        //     }
+        // });
 
 
         // --- About Section Slider ---
@@ -1804,7 +1810,19 @@ document.addEventListener('keydown', (e) => {
         startAboutInterval(); // Start auto-advancing
 
 
-        
+        // --- REMOVE OLD SLIDER JS ---
+        // Make sure you remove or comment out the previous JS related to
+        // #slides, nextSlide(), prevSlide() if they were targeting the old about section.
+        // Example:
+        /*
+        const slidesContainer = document.getElementById('slides');
+        if (slidesContainer) { // Check if slider exists
+            // ... OLD SLIDER CODE HERE ...
+        }
+        // Remove or comment out:
+        // window.nextSlide = ...
+        // window.prevSlide = ...
+        */
     </script>
 </body>
 </html>
