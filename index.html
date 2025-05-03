@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1828,3 +1829,1823 @@ document.addEventListener('keydown', (e) => {
 </html>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queen Vee Chess Academy ♛</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* CSS Variables for Theming */
+        :root {
+            --primary-color: #800000; /* Slightly darker Red */
+            --secondary-color: #D4AF37; 
+            --background-light: #fdfdfd; 
+            --text-light: #1a1a1a;
+            --card-bg-light: #ffffff;
+            --border-light: #e0e0e0;
+
+            --background-dark: #121212; /* Deeper dark */
+            --text-dark: #e0e0e0;
+            --card-bg-dark: #1e1e1e; /* Slightly lighter dark for cards */
+            --border-dark: #333333;
+
+            --font-heading: 'Merriweather', serif;
+            --font-body: 'Poppins', sans-serif;
+            --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            --box-shadow-dark: 0 6px 18px rgba(0, 0, 0, 0.2);
+            --border-radius: 10px; /* Slightly larger radius */
+            --transition-speed: 0.4s; /* Slightly slower for smoother feel */
+            --transition-ease: cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother easing */
+
+            /* Default to Light Mode */
+            --bg-color: var(--background-light);
+            --text-color: var(--text-light);
+            --card-bg: var(--card-bg-light);
+            --border-color: var(--border-light);
+            --shadow: var(--box-shadow);
+            --hero-overlay-start: rgba(0, 0, 0, 0.4);
+            --hero-overlay-end: rgba(0, 0, 0, 0.7);
+            --slide-overlay-color: rgba(0, 0, 0, 0.65);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode { --text-rgb-dark: 233, 236, 239; /* RGB for --text-dark (#e9ecef) */
+          --decor-opacity: 0.12; /* Slightly higher opacity for dark mode */
+            --bg-color: var(--background-dark);
+            --text-color: var(--text-dark);
+            --card-bg: var(--card-bg-dark);
+            --border-color: var(--border-dark);
+            --shadow: var(--box-shadow-dark);
+            --hero-overlay-start: rgba(10, 10, 10, 0.6);
+            --hero-overlay-end: rgba(10, 10, 10, 0.85);
+            --slide-overlay-color: rgba(15, 15, 15, 0.75);
+        }
+
+        /* Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7; /* Slightly increased line height */
+            transition: background-color var(--transition-speed) var(--transition-ease), color var(--transition-speed) var(--transition-ease);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: inherit;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.8rem; letter-spacing: -0.5px;}
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 3rem; }
+        h3 { font-size: 1.6rem; }
+
+        p {
+            margin-bottom: 1rem;
+            font-weight: 300; /* Lighter body text */
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: calc(var(--border-radius) / 2); /* Subtle radius on images */
+        }
+
+        section {
+            padding: 100px 20px;
+            overflow: hidden; /* Hide parts of elements sliding in */
+        }
+
+        .container {
+            max-width: 1140px; /* Slightly narrower */
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: var(--font-body); /* Ensure button uses body font */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            transition: background-color var(--transition-speed) var(--transition-ease), transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+            box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3); /* Button shadow */
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--background-dark); /* Dark text on gold hover */
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #fff; /* White for hero section */
+            border: 2px solid #fff; /* White border for hero */
+             box-shadow: none;
+        }
+         .btn-outline:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+            border-color: #fff;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+         }
+         .background-decor {
+    position: fixed;
+    top: 0;
+    left: 30px; /* Position from left edge */
+    bottom: 0;
+    width: 30px; /* Width of the clickable area (icon size) */
+    z-index: -1; /* Behind all content */
+    pointer-events: none; /* Not interactable */
+    overflow: hidden; /* Hide anything extending outside */
+}
+        /* Theme Toggle */.decor-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Center the line */
+    transform: translateX(-50%);
+    width: 1px; /* Line thickness */
+    /* Use RGB variables for opacity control */
+    background-color: rgba(var(--text-rgb-light), var(--decor-opacity));
+    transition: background-color var(--transition-speed) var(--transition-ease);
+}body.dark-mode .decor-line {
+    background-color: rgba(var(--text-rgb-dark), var(--decor-opacity));
+}
+
+.decor-icon {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px; /* Icon size */
+    height: 22px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: var(--decor-opacity); /* Use variable opacity */
+    transition: opacity var(--transition-speed) var(--transition-ease);
+    /* Set background-image for each icon type */
+    /* Option A: Linking external SVGs */
+    /* Make sure these SVGs use fill="currentColor" or no fill attribute */
+    color: var(--text-color); /* Set color for currentColor in SVG */
+    transition: opacity var(--transition-speed) var(--transition-ease), color var(--transition-speed) var(--transition-ease);
+}
+
+body.dark-mode .decor-icon {
+     color: var(--text-color); /* Update color for dark mode */
+}
+        
+
+        /* Header & Navigation */
+        header {
+            position: fixed; /* Changed from sticky */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent; /* Start transparent */
+            z-index: 1000;
+            padding: 15px 0;
+            transition: background-color 0.5s var(--transition-ease), padding 0.5s var(--transition-ease), box-shadow 0.5s var(--transition-ease);
+        }
+
+        header.scrolled { /* Added via JS */
+            background-color: rgba(20, 20, 20, 0.9); /* Darker bg on scroll */
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px; /* Match container width */
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container { display: flex; align-items: center; }
+        .logo-img { height: 55px; margin-right: 15px; transition: height 0.5s var(--transition-ease); }
+        header.scrolled .logo-img { height: 45px; }
+        .logo-text { font-size: 1.5rem; font-family: var(--font-heading); font-weight: 700; color: #fff; }
+
+        .nav-links { list-style: none; display: flex; align-items: center; }
+        .nav-links li { margin-left: 30px; }
+        .nav-links a {
+            color: #f0f0f0; /* Slightly off-white */
+            font-weight: 400;
+            font-size: 0.95rem;
+            padding: 8px 0;
+            position: relative;
+            transition: color var(--transition-speed) var(--transition-ease);
+            letter-spacing: 0.5px;
+        }
+        .nav-links a::after {
+             content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; transform: translateX(-50%);
+             background-color: var(--secondary-color);
+             transition: width var(--transition-speed) var(--transition-ease);
+        }
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links .donate-btn {
+            background-color: var(--secondary-color); color: var(--background-dark); padding: 10px 20px; border-radius: var(--border-radius);
+            transition: background-color var(--transition-speed) var(--transition-ease), color var(--transition-speed) var(--transition-ease), transform var(--transition-speed) ease;
+            margin-left: 30px; font-weight: 600; box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+        }
+        .nav-links .donate-btn:hover {
+            background-color: #fff; color: var(--primary-color); transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.4);
+        }
+        .nav-links .donate-btn::after { display: none; }
+
+        .hamburger { display: none; cursor: pointer; }
+        .hamburger .bar { display: block; width: 28px; height: 3px; margin: 6px auto; background-color: #fff; border-radius: 3px; transition: all var(--transition-speed) var(--transition-ease); }
+
+        /* Hero Section */
+        .hero {
+            position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff;
+            background: url('image1.jpg') no-repeat center center/cover; /* Use a good quality background */
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, var(--hero-overlay-start), var(--hero-overlay-end)); /* Gradient Overlay */
+            z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 850px; padding: 20px; }
+        .hero h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700; /* Bold for impact */
+    font-size: 3.8rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+        .hero p {
+            font-size: 1.6rem; margin-bottom: 2.5rem; font-weight: 300; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            font-family: var(--font-body); max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+        .cta-buttons .btn { margin: 0 15px; }
+
+        /* About Section (Slider) */
+/* --- New About Section Styles --- */
+
+#about {
+    background-color: var(--card-bg); /* Or var(--bg-color) */
+    padding-top: 100px;
+    padding-bottom: 30px; /* Reduced from 40px to 30px */
+    position: relative;
+    margin-bottom: 0; /* Already minimized */
+    overflow: hidden; /* Contain elements sliding in */
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Image | Text */
+    gap: 25px; /* Reduced from 30px to 25px */
+    align-items: start; /* Kept as start */
+    margin-bottom: 0; /* Already minimized */
+}
+
+/* Adjust child elements to minimize height contribution */
+.about-image-col {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    max-height: 430px; /* Reduced from 450px to 430px */
+    margin-bottom: 0;
+}
+
+.about-image-col img {
+    width: 100%;
+    height: 100%;
+    max-height: 430px; /* Match container */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s var(--transition-ease);
+}
+.about-image-col:hover img {
+    transform: scale(1.03);
+}
+
+.about-content-col {
+    margin-bottom: 0;
+}
+
+.about-selectors {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px; /* Reduced from 20px to 15px */
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px; /* Reduced from 10px to 8px */
+}
+
+.about-selector {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-color);
+    opacity: 0.6;
+    cursor: pointer;
+    padding: 5px 10px;
+    position: relative;
+    transition: opacity var(--transition-speed) var(--transition-ease), color var(--transition-speed) var(--transition-ease);
+    border-radius: 5px;
+}
+
+.about-selector::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    bottom: -9px; /* Adjusted from -11px to match reduced padding */
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--secondary-color);
+    transition: width 0.4s var(--transition-ease);
+}
+
+.about-selector:hover {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+.about-selector.active {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+.about-selector.active::after {
+    width: 100%;
+}
+
+.about-text-display {
+    position: relative;
+    min-height: 170px; /* Reduced from 180px to 170px */
+    overflow: hidden; /* Clip content sliding out */
+}
+
+.about-text-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s var(--transition-ease), transform 0.6s var(--transition-ease);
+    pointer-events: none;
+}
+
+.about-text-block.active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    pointer-events: auto;
+}
+
+.about-text-block h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
+}
+
+.about-text-block p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments for About Section */
+@media (max-width: 992px) {
+    .about-container {
+        grid-template-columns: 1fr; /* Stack columns */
+        gap: 15px; /* Reduced from 20px to 15px */
+    }
+    .about-image-col {
+        max-height: 330px; /* Reduced from 350px to 330px */
+        order: 1;
+    }
+    .about-image-col img {
+        max-height: 330px;
+    }
+    .about-content-col {
+        order: 2;
+    }
+    .about-text-display {
+        min-height: 150px; /* Reduced from 160px to 150px */
+    }
+}
+
+@media (max-width: 768px) {
+    .about-selectors {
+        gap: 10px;
+        margin-bottom: 10px; /* Reduced from 15px to 10px */
+        flex-wrap: wrap;
+    }
+    .about-selector {
+        font-size: 0.9rem;
+    }
+    .about-text-block h3 {
+        font-size: 1.6rem;
+    }
+    .about-text-block p {
+        font-size: 0.95rem;
+    }
+    #about {
+        padding-top: 70px;
+        padding-bottom: 20px; /* Reduced from 30px to 20px */
+    }
+}
+
+        /* Blog Section */
+#blog { 
+    background-color: var(--bg-color); 
+    padding-top: 40px; /* Added to reduce space above the heading */
+}
+.blog-posts { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 35px; 
+}
+.blog-post {
+    background-color: var(--card-bg); 
+    border-radius: var(--border-radius); 
+    overflow: hidden; 
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+    display: flex; 
+    flex-direction: column; 
+    border: 1px solid var(--border-color);
+}
+.blog-post:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12); 
+}
+.blog-image { 
+    width: 100%; 
+    height: 220px; 
+    object-fit: cover; 
+    transition: transform 0.5s var(--transition-ease); 
+}
+.blog-post:hover .blog-image { 
+    transform: scale(1.05); 
+}
+.blog-content { 
+    padding: 30px; 
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+}
+.blog-content h3 { 
+    margin-bottom: 15px; 
+    color: var(--primary-color); 
+    font-family: var(--font-heading); 
+}
+.blog-content p { 
+    flex-grow: 1; 
+    margin-bottom: 25px; 
+    font-size: 0.95rem; 
+    color: var(--text-color); 
+    opacity: 0.85;
+}
+.blog-content .btn { 
+    align-self: flex-start; 
+}
+
+        /* Replace the existing gallery CSS in the <style> section */
+/* Gallery Section */
+.gallery {
+    background-color: var(--card-bg);
+    padding: 40px 20px; /* Reduced from 80px to 40px for top/bottom padding */
+    margin-bottom: 0; /* Ensure no extra margin below */
+}
+
+.gallery h2 {
+    margin-bottom: 2rem;
+}
+
+.gallery-viewport {
+    width: 100%;
+    overflow: hidden; /* Hide scrollbar and overflow */
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); /* Fade edges */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.gallery-grid {
+    display: flex;
+    width: max-content; /* Allow content to determine width */
+    animation: scrollRightToLeft 60s linear infinite; /* Increased from 30s to 60s */
+    will-change: transform; /* Optimize animation performance */
+}
+
+.gallery-viewport:hover .gallery-grid {
+    animation-play-state: paused; /* Pause on hover */
+}
+
+.gallery-item {
+    flex: 0 0 auto;
+    width: 300px; /* Fixed width */
+    height: 250px;
+    margin: 0 15px; /* Increased spacing */
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform var(--transition-speed) var(--transition-ease),
+               box-shadow var(--transition-speed) var(--transition-ease);
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-speed) var(--transition-ease);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+@keyframes scrollRightToLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Move half the width (original + duplicate) */
+}
+
+/* Lightbox Styles (unchanged from previous version) */
+.gallery-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.gallery-lightbox.active {
+    display: flex;
+}
+
+.lightbox-image {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: lightboxFadeIn 0.3s ease;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: color var(--transition-speed) var(--transition-ease);
+}
+
+.lightbox-close:hover {
+    color: var(--secondary-color);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+
+.lightbox-prev, .lightbox-next {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) var(--transition-ease);
+}
+
+.lightbox-prev:hover, .lightbox-next:hover {
+    background: var(--secondary-color);
+}
+
+@keyframes lightboxFadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        width: 200px;
+        height: 160px;
+        margin: 0 10px;
+    }
+    .gallery-grid {
+        animation-duration: 40s; /* Increased from 20s to 40s */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        width: 160px;
+        height: 130px;
+        margin: 0 8px;
+    }
+    .gallery-grid {
+        animation-duration: 30s; /* Increased from 15s to 30s */
+    }
+}
+
+
+
+        /* Donate Section */
+        .donate {
+            background: linear-gradient(135deg, var(--primary-color), #a00000); /* Gradient background */
+            color: #fff; text-align: center; padding: 100px 20px;
+        }
+        .donate h2 { color: #fff; margin-bottom: 1.5rem; }
+        .donate p { max-width: 800px; margin: 0 auto 2.5rem auto; font-size: 1.1rem; line-height: 1.8; opacity: 0.9; font-weight: 400;}
+        .donate .donate-btn {
+            background-color: var(--secondary-color); color: var(--background-dark); font-size: 1.1rem; padding: 18px 40px;
+             box-shadow: 0 6px 15px rgba(0,0,0, 0.2);
+        }
+        .donate .donate-btn:hover {
+            background-color: #fff; color: var(--primary-color); transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0, 0.3);
+        }
+
+        /* Contact Section */
+        .contact { background-color: var(--bg-color); }
+        .contact > p { text-align: center; margin-bottom: 3.5rem; max-width: 650px; margin-left: auto; margin-right: auto; font-size: 1.05rem; opacity: 0.9;}
+        .contact-container { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; max-width: 1100px; margin: 0 auto; align-items: start; }
+        .contact-form { background-color: var(--card-bg); padding: 35px; border-radius: var(--border-radius); box-shadow: var(--shadow); border: 1px solid var(--border-color);}
+        .form-group { margin-bottom: 25px; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 15px 18px; border: 1px solid var(--border-color); border-radius: var(--border-radius); font-family: inherit; font-size: 1rem;
+            background-color: var(--bg-color); color: var(--text-color); transition: border-color var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--secondary-color); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        .contact-form button { width: 100%; font-size: 1.05rem; padding: 16px; }
+        .contact-info { padding-top: 15px; }
+        .info-item { display: flex; align-items: center; margin-bottom: 25px; font-size: 1.1rem; }
+        .info-item i { font-size: 1.6rem; color: var(--primary-color); margin-right: 20px; width: 35px; text-align: center; transition: transform var(--transition-speed) var(--transition-ease); }
+        .info-item:hover i { transform: scale(1.1); }
+        .info-item p { margin-bottom: 0; }
+        .info-item a { color: inherit; transition: color 0.3s ease; }
+        .info-item a:hover { color: var(--primary-color); }
+        .social-links { margin-top: 35px; }
+        .social-links a {
+            color: var(--text-color); font-size: 1.9rem; margin-right: 25px; transition: color var(--transition-speed) var(--transition-ease), transform var(--transition-speed) var(--transition-ease); display: inline-block; opacity: 0.7;
+        }
+        .social-links a:hover { color: var(--primary-color); transform: translateY(-3px) scale(1.1); opacity: 1;}
+        .social-links a:last-child { margin-right: 0; }
+
+        /* Footer */
+        footer { background-color: var(--background-dark); color: #aaa; text-align: center; padding: 30px 20px; margin-top: 80px; font-size: 0.9rem; border-top: 1px solid var(--border-dark); }
+
+        /* --- Animation Classes --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px); /* Start slightly lower */
+            transition: opacity 0.8s var(--transition-ease), transform 0.8s var(--transition-ease);
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay helper classes (apply alongside .animate-on-scroll) */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+
+        /* --- Loader Styles --- */
+        /* --- Loader Styles --- */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Slightly softer background for sleekness */
+    background-color: rgba(18, 18, 18, 0.75); /* Use var(--background-dark) with alpha if preferred */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease; /* Smoother fade for overlay */
+    backdrop-filter: blur(3px); /* Optional: Add subtle background blur */
+}
+
+.loader-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.icon-pawn {
+    top: 20%; /* Adjust vertical position */
+    background-image: url('pawn-icon.svg'); /* Replace with your path */
+    /* Option B: Using Data URI
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="currentColor"><path d="...pawn path data..."/></svg>');
+    */
+}
+
+.icon-knight {
+    top: 50%; /* Adjust vertical position */
+    background-image: url('knight-icon.svg'); /* Replace with your path */
+}
+
+.icon-queen {
+    top: 80%; /* Adjust vertical position */
+    background-image: url('queen-icon.svg'); /* Replace with your path */
+}
+
+.loader-icon {
+    font-size: 4.5rem; /* Slightly larger Queen icon */
+    color: var(--secondary-color); /* Gold color */
+    /* Apply the new sleek animation */
+    animation: queenLoadAnimation 2s ease-in-out infinite;
+    transform-origin: center center; /* Ensure scaling happens from the center */
+}
+
+/* Remove or comment out the old pulse animation */
+/*
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+*/
+
+/* New Sleek Animation for the Queen */
+@keyframes queenLoadAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0.7) rotate(-10deg); /* Start smaller, faded, slightly rotated */
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(5deg); /* Fade in, normal size, slight opposite rotation */
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.7) rotate(-10deg); /* Fade out back to starting state */
+    }
+}
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 3.2rem; }
+            .hero p { font-size: 1.4rem; }
+            .contact-container { grid-template-columns: 1fr; gap: 40px;}
+            .contact-info { padding-top: 0; margin-top: 20px; }
+             .gallery-item { width: 250px; height: 200px; } /* Adjust gallery item size */
+        }
+
+        @media (max-width: 768px) {
+            html { font-size: 15px; }
+            section { padding: 70px 15px; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.9rem; margin-bottom: 2.5rem;}
+            .hero { height: 90vh; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero p { font-size: 1.2rem; }
+
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100vh;
+                background-color: rgba(18, 18, 18, 0.98); /* Almost opaque dark */ backdrop-filter: blur(5px);
+                flex-direction: column; align-items: center; justify-content: center;
+                transition: right var(--transition-speed) var(--transition-ease); padding-top: 0; box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { margin: 25px 0; }
+            .nav-links a { font-size: 1.2rem; color: #fff; }
+            .nav-links .donate-btn { margin-left: 0; margin-top: 25px; }
+
+            .hamburger { display: block; z-index: 1001; /* Ensure hamburger is above menu */ position: relative; /* Needed for z-index */ }
+            /* Adjust hamburger position when menu is open */
+             .hamburger.active {
+                 /* Optional: change color or style when active */
+             }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+            .blog-posts { grid-template-columns: 1fr; gap: 25px;} /* Stack blog posts */
+            .gallery-item { width: 200px; height: 160px; } /* Smaller gallery items */
+            .gallery-grid { animation-duration: 45s; } /* Faster animation on smaller screens */
+
+            .slide { padding: 40px; min-height: 60vh; }
+            .slide-content h3 { font-size: 1.9rem;}
+            .slide-content p { font-size: 1.05rem; }
+            .arrow { padding: 0; width: 45px; height: 45px; }
+            .arrow i { font-size: 1.5rem; }
+            .left-arrow { left: 15px; }
+            .right-arrow { right: 15px; }
+        }
+        /* Programs Section */
+#programs {
+    background-color: var(--bg-color);
+    padding: 40px 20px; /* Reduced top/bottom padding from 100px to 40px */
+    position: relative;
+    text-align: center;
+    margin-top: 0; /* Ensure no extra margin above */
+}
+
+.programs-section h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 2rem; /* Kept as-is */
+    margin-top: 0; /* Explicitly set to remove any default top margin */
+}
+
+/* Rest of the programs section styles remain unchanged */
+.program-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.program-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-speed) var(--transition-ease), 
+                box-shadow var(--transition-speed) var(--transition-ease);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    width: 450px;
+    max-width: 100%;
+}
+
+/* ... rest of .program-card, .program-image, .program-content, etc., unchanged ... */
+
+.program-card:hover {
+  transform: translateY(-10px);
+}
+
+.icon-container {
+  font-size: 2rem;
+  color: #6b5b95;
+  margin-bottom: 10px;
+}
+
+.program-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.program-card h3 {
+  font-size: 1.5rem;
+  color: #111827;
+  margin: 10px 0;
+}
+
+.program-card p {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 30px;
+}
+
+.card-arrow {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: #6b5b95;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card-arrow:hover {
+  transform: translateX(5px);
+}
+        @media (max-width: 480px) {
+             html { font-size: 14px; }
+             section { padding: 50px 10px; }
+             .hero { height: 85vh; }
+             .hero h1 { font-size: 2.1rem; }
+             .hero p { font-size: 1.1rem; }
+             .cta-buttons { display: flex; flex-direction: column; align-items: center; }
+             .cta-buttons .btn { margin: 12px 0; width: 85%; padding: 14px 20px; }
+             .logo-text { font-size: 1.25rem; }
+             .logo-img { height: 40px; }
+             header.scrolled .logo-img { height: 35px; }
+             header { padding: 10px 0; }
+             header.scrolled { padding: 8px 0; }
+
+             .contact-form { padding: 25px;}
+             .info-item { font-size: 1rem; }
+             .info-item i { font-size: 1.4rem; margin-right: 15px;}
+             .social-links a { font-size: 1.6rem; margin-right: 20px; }
+             footer { padding: 25px 10px; }
+             .gallery-item { width: 160px; height: 130px; margin: 0 8px;}
+             .gallery-grid { animation-duration: 35s; } /* Even faster */
+        }
+    /* Featured On Section */
+.featured-on {
+    background-color: var(--bg-color);
+    padding: 60px 20px;
+    position: relative;
+}
+
+.featured-on h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.logo-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logo-slider {
+    display: flex;
+    width: max-content;
+    animation: slideRightToLeft 20s linear infinite;
+    will-change: transform;
+}
+
+.logo-slider:hover {
+    animation-play-state: paused;
+}
+
+.logo-item {
+    flex: 0 0 auto;
+    margin: 0 30px;
+    transition: transform var(--transition-speed) var(--transition-ease), opacity var(--transition-speed) var(--transition-ease);
+}
+
+.logo-item img {
+    height: 80px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    filter: grayscale(50%);
+    transition: filter var(--transition-speed) var(--transition-ease);
+}
+
+.logo-item:hover {
+    transform: scale(1.1);
+}
+
+.logo-item:hover img {
+    filter: grayscale(0%);
+}
+
+@keyframes slideRightToLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Move half the width for seamless loop */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo-item {
+        margin: 0 20px;
+    }
+    .logo-item img {
+        height: 60px;
+    }
+    .logo-slider {
+        animation-duration: 15s;
+    }
+}
+/* Programs Section */
+/* Programs Section */
+.programs-section {
+    background-color: var(--bg-color);
+    padding: 40px 20px; /* Reduced from 80px to 40px for top/bottom padding */
+    position: relative;
+    text-align: center;
+    margin-top: 0; /* Ensure no extra margin above */
+}
+
+.programs-section h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 2rem; /* Reduced from 3rem to 2rem for tighter spacing */
+}
+
+/* Program Cards Container */
+.program-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Program Card */
+.program-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-speed) var(--transition-ease), 
+                box-shadow var(--transition-speed) var(--transition-ease);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    width: 450px;
+    max-width: 100%;
+}
+
+/* Keep the rest of the .program-card styles unchanged */
+
+.program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Program Image */
+.program-image {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Increased height to match wider card */
+    overflow: hidden;
+}
+
+.program-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--transition-ease);
+}
+
+.program-card:hover .program-image img {
+    transform: scale(1.08);
+}
+
+/* Gradient Overlay on Image */
+.program-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(128, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+    transition: opacity var(--transition-speed) var(--transition-ease);
+}
+
+.program-card:hover .program-image::after {
+    opacity: 0.8;
+}
+
+/* Program Content */
+.program-content {
+    padding: 30px; /* Slightly more padding for wider cards */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+}
+
+.program-content h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem; /* Larger font for wider cards */
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.program-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    transition: width var(--transition-speed) var(--transition-ease);
+}
+
+.program-card:hover .program-content h3::after {
+    width: 60px;
+}
+
+.program-content p {
+    font-size: 1rem; /* Slightly larger text */
+    color: var(--text-color);
+    opacity: 0.9;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* Program Button */
+.program-btn {
+    align-self: flex-start;
+    padding: 14px 30px; /* Larger button for wider cards */
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3);
+}
+
+.program-btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--background-dark);
+    box-shadow: 0 7px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .program-card {
+    border-color: var(--border-dark);
+}
+
+body.dark-mode .program-content p {
+    opacity: 0.85;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .program-card {
+        width: 360px; /* Slightly narrower for medium screens */
+    }
+    .program-image {
+        height: 200px;
+    }
+    .program-content h3 {
+        font-size: 1.6rem;
+    }
+    .program-content p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .program-cards {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center; /* Center-align stacked cards */
+        gap: 30px;
+    }
+    .program-card {
+        width: 100%; /* Full width on smaller screens */
+        max-width: 450px; /* Cap width for balance */
+    }
+    .program-image {
+        height: 200px;
+    }
+    .program-content {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .program-card {
+        max-width: 360px;
+    }
+    .program-image {
+        height: 180px;
+    }
+    .program-content {
+        padding: 20px;
+    }
+    .program-content h3 {
+        font-size: 1.4rem;
+    }
+    .program-content p {
+        font-size: 0.9rem;
+    }
+    .program-btn {
+        width: 100%; /* Full-width button on small screens */
+        text-align: center;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="checkered-background"></div>
+    <div class="background-decor" aria-hidden="true">
+        
+    </div>
+  <div id="loader" class="loader-overlay">
+    <i class="fas fa-chess-queen loader-icon"></i> </div>
+
+    <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+       
+
+    <header id="header">
+        <nav>
+          <div class="logo-container">
+            <img src="logo.png" alt="Queen Vee Chess Academy Logo" class="logo-img animate-on-scroll">
+            <span class="logo-text animate-on-scroll delay-1">Queen Vee Chess Academy</span>
+          </div>
+
+          <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+
+          <ul class="nav-links" id="nav-links">
+            <li><a href="#home" class="nav-link-item" onclick="closeMenu()">Home</a></li>
+            <li><a href="#about" class="nav-link-item" onclick="closeMenu()">About</a></li>
+            <li><a href="#blog" class="nav-link-item" onclick="closeMenu()">Blog</a></li>
+            
+            
+           
+            <li><a href="#gallery" class="nav-link-item" onclick="closeMenu()">Gallery</a></li>
+            <li><a href="#contact" class="nav-link-item" onclick="closeMenu()">Contact</a></li>
+            <li><a href="#donate" class="btn donate-btn nav-link-item" onclick="closeMenu()">Donate</a></li>
+        </ul>
+        </nav>
+      </header>
+
+    <main>
+        <section id="home" class="hero">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+              <h1 class="animate-on-scroll"><b>Empowering Displaced Children, One Move at a Time</b></h1>
+              <p< class="animate-on-scroll delay-1"><b>Transforming lives through the power of chess.</b></p>
+              <div class="cta-buttons animate-on-scroll delay-2">
+                   <a href="#donate" class="btn nav-link-item">Support Us</a>
+                  <a href="#about" class="btn btn-outline nav-link-item">Learn More</a>
+              </div>
+          </div>
+        </section>
+
+        <section id="about" class="about animate-on-scroll">
+          <div class="container">
+     
+              <div class="about-container">
+                  <div class="about-image-col animate-on-scroll delay-1">
+                      <img src="slide1.jpg" alt="Queen Vee Chess Academy Activities" id="about-image">
+                      </div>
+      
+                  <div class="about-content-col animate-on-scroll delay-2">
+                      <div class="about-selectors">
+                          <button class="about-selector active" data-index="0">Who We Are</button>
+                          <button class="about-selector" data-index="1">What We Do</button>
+                          <button class="about-selector" data-index="2">Our Impact</button>
+                          </div>
+      
+                      <div class="about-text-display" id="about-text-display">
+                          <div class="about-text-block active" data-index="0">
+                              
+                              <p>At Queen Vee Chess Academy, we are dedicated to transforming lives through the power of chess. Founded with the belief that every child deserves a chance to thrive, we empower internally displaced children in Northern Nigeria with strategic thinking, emotional resilience, and a renewed sense of hope.</p>
+                          </div>
+                          <div class="about-text-block" data-index="1">
+                              
+                              <p>Through our flagship program, the Chess in IDP Camps Initiative, we use chess as a tool to address trauma, enhance critical thinking, and foster belonging among children affected by displacement. Our work is grounded in the idea that chess can be more than a game—it can be a pathway to healing and growth.</p>
+                          </div>
+                          <div class="about-text-block" data-index="2">
+                             
+                              <p>We have helped 50 children return to school, providing them with the opportunity to continue their education and build a brighter future.</p>
+                              <p>We supported four boys from IDP camps to represent Adamawa State at the National Youth Games, with one of them achieving an impressive 4th place on Board 4.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <section id="programs" class="programs-section">
+        <div class="container">
+            <h2 class="animate-on-scroll">Our Programs</h2>
+            <div class="program-cards animate-on-scroll delay-1">
+                <!-- Chess Program Card -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="image3.jpg" alt="Chess Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Chess</h3>
+                        <p>Empowering displaced children with strategic thinking and emotional resilience through the timeless game of chess.</p>
+                        <a href="#about" class="btn program-btn">Learn More</a>
+                    </div>
+                </div>
+                <!-- Arduino Program Card -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="arduino.jpg" alt="Arduino Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Arduino</h3>
+                        <p>Inspiring creativity and problem-solving by teaching kids the basics of electronics and coding with Arduino.</p>
+                        <a href="#contact" class="btn program-btn">Get Involved</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+         <section id="blog" class="blog">
+            <div class="container">
+                <h2 class="animate-on-scroll">From Our Blog</h2>
+                <div class="blog-posts">
+                <div class="blog-post animate-on-scroll delay-1">
+                    <img src="blog1.jpg" alt="Children playing chess" class="blog-image">
+                    <div class="blog-content">
+                        <h3>Empowering Minds</h3>
+                        <p>Queen Vee Chess Academy’s Mission to Help IDP Kids Through Chess</p>
+                        <a href="#" class="btn">Read More</a> </div>
+                </div>
+                <div class="blog-post animate-on-scroll delay-2">
+                    <img src="blog2.jpg" alt="Chess board close up" class="blog-image">
+                    <div class="blog-content">
+                        <h3>Mary's Story</h3>
+                        <p>Discover how chess helped Mary regain confidence and hope...</p>
+                        <a href="#" class="btn">Read More</a> </div>
+                </div>
+                <div class="blog-post animate-on-scroll delay-3">
+                    <img src="blog3.jpg" alt="Chess instructor teaching" class="blog-image">
+                    <div class="blog-content">
+                        <h3>Meet Mr. Daven</h3>
+                        <p>Learn about one of our dedicated instructors making a difference...</p>
+                        <a href="#" class="btn">Read More</a> </div>
+                </div>
+                </div>
+            </div>
+        </section>
+      
+            
+        <!-- Replace the existing gallery section HTML -->
+<section id="gallery" class="gallery">
+    <div class="container">
+        <h2 class="animate-on-scroll">Gallery</h2>
+        <div class="gallery-viewport animate-on-scroll delay-1" id="gallery-viewport">
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Original set -->
+                <div class="gallery-item" data-full="image1.jpg">
+                    <img src="image1.jpg" alt="Gallery Image 1">
+                </div>
+                <div class="gallery-item" data-full="image2.jpg">
+                    <img src="image2.jpg" alt="Gallery Image 2">
+                </div>
+                <div class="gallery-item" data-full="image3.jpg">
+                    <img src="image3.jpg" alt="Gallery Image 3">
+                </div>
+                <div class="gallery-item" data-full="image4.jpg">
+                    <img src="image4.jpg" alt="Gallery Image 4">
+                </div>
+                <div class="gallery-item" data-full="image5.jpg">
+                    <img src="image5.jpg" alt="Gallery Image 5">
+                </div>
+                <div class="gallery-item" data-full="image6.jpg">
+                    <img src="image6.jpg" alt="Gallery Image 6">
+                </div>
+                <div class="gallery-item" data-full="image7.jpg">
+                    <img src="image7.jpg" alt="Gallery Image 7">
+                </div>
+                <div class="gallery-item" data-full="image8.jpg">
+                    <img src="image8.jpg" alt="Gallery Image 8">
+                </div>
+                <!-- Duplicate set for seamless looping -->
+                <div class="gallery-item" data-full="image1.jpg">
+                    <img src="image1.jpg" alt="Gallery Image 1">
+                </div>
+                <div class="gallery-item" data-full="image2.jpg">
+                    <img src="image2.jpg" alt="Gallery Image 2">
+                </div>
+                <div class="gallery-item" data-full="image3.jpg">
+                    <img src="image3.jpg" alt="Gallery Image 3">
+                </div>
+                <div class="gallery-item" data-full="image4.jpg">
+                    <img src="image4.jpg" alt="Gallery Image 4">
+                </div>
+                <div class="gallery-item" data-full="image5.jpg">
+                    <img src="image5.jpg" alt="Gallery Image 5">
+                </div>
+                <div class="gallery-item" data-full="image6.jpg">
+                    <img src="image6.jpg" alt="Gallery Image 6">
+                </div>
+                <div class="gallery-item" data-full="image7.jpg">
+                    <img src="image7.jpg" alt="Gallery Image 7">
+                </div>
+                <div class="gallery-item" data-full="image8.jpg">
+                    <img src="image8.jpg" alt="Gallery Image 8">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lightbox for viewing full images -->
+        <div class="gallery-lightbox" id="gallery-lightbox">
+            <span class="lightbox-close" id="lightbox-close">×</span>
+            <img class="lightbox-image" id="lightbox-image" src="" alt="Selected Gallery Image">
+            <div class="lightbox-nav">
+                <button class="lightbox-prev" id="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="lightbox-next" id="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="featured-on" class="featured-on">
+    <div class="container">
+        <h2 class="animate-on-scroll">Featured On</h2>
+        <div class="logo-viewport">
+            <div class="logo-slider">
+                <!-- Original set -->
+                <a href="https://www.thecable.ng/chess-academy-for-kids-in-idp-camps-launches-in-north-east-nigeria/" target="_blank" class="logo-item">
+                    <img src="news1.png" alt="Newspaper 1">
+                </a>
+                <a href="https://guardian.ng/news/nigerian-chess-prodigy-zira-wins-medal-at-us-tournament/" target="_blank" class="logo-item">
+                    <img src="news5.png" alt="Newspaper 1">
+                </a>
+                <a href="https://leadership.ng/yola-idp-girl-wins-silver-medal-at-us-chess-tournament/" target="_blank" class="logo-item">
+                    <img src="news5.png" alt="Newspaper 1">
+                </a>
+                <a href="https://www.thisdaylive.com/index.php/2023/10/14/queen-vee-chess-academy-helping-idp-kids-to-play/" target="_blank" class="logo-item">
+                    <img src="news2.png" alt="Newspaper 2">
+                </a>
+                <!-- Duplicate set for seamless looping -->
+                <a href="https://www.thisdaylive.com/index.php/2024/11/02/chessll-help-kids-to-greatness-says-queen-vee/" target="_blank" class="logo-item">
+                    <img src="news1.png" alt="Newspaper 1">
+                </a>
+                <a href="https://guardian.ng/sport/idp-camp-to-global-stage-how-chess-is-transforming-lives-in-adamawa/3" target="_blank" class="logo-item">
+                    <img src="news3.png" alt="Newspaper 2">
+                </a>
+                <a href="https://www.vanguardngr.com/2024/08/chess-prashar-savoies-visit-revives-hope-in-pupils-of-betharbel-school-for-idps/" target="_blank" class="logo-item">
+                    <img src="news4.png" alt="Brand 2">
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+        <section id="donate" class="donate">
+            <div class="container animate-on-scroll">
+                <div class="donate-content">
+                    <h2><b>Support Our Mission</b></h2>
+                    <p><b>
+                        Your contribution directly empowers internally displaced children in Northern Nigeria. Through chess, we provide tools for strategic thinking, emotional resilience, access to education, and hope for a brighter future. Join us in making a difference, one move at a time. We have impacted many lives but countless children in IDP camps across the region still need support.
+                    </b></p>
+                    <a href="https://www.gofundme.com/f/internally-displaced-children-in-northern-nigeria?utm_campaign=p_cp+fundraiser-sidebar&utm_medium=copy_link_all&utm_source=customer" class="btn donate-btn" target="_blank" onclick="alert('Thank you for your support! Redirecting to GoFundMe...');">Donate Now</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="animate-on-scroll">Get In Touch</h2>
+                <p class="animate-on-scroll delay-1">Have questions, want to volunteer, or partner with us? We'd love to hear from you.</p>
+
+                <div class="contact-container">
+                    
+
+                    <div class="contact-info animate-on-scroll delay-3">
+                        <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>Email: <a href="mailto:info@queenveechess.org">info@queenveechess.org</a></p>
+                        </div>
+                        <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>Phone: <a href="tel:+234XXXXXXXXXX">+234 123 456 7890</a></p> </div>
+                        <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Address: 123 Chess Street, Yola, Adamawa State, Nigeria</p> </div>
+                        <div class="social-links">
+                            <a href="#" target="_blank" aria-label="Facebook"> <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" target="_blank" aria-label="Twitter"> <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" target="_blank" aria-label="Instagram"> <i class="fab fa-instagram"></i>
+                            </a>
+                             <a href="#" target="_blank" aria-label="LinkedIn"> <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> Queen Vee Chess Academy. Empowering Futures Through Chess. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- Get Current Year for Footer ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Header Scroll Effect ---
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- Hamburger Menu Toggle ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const bodyForMenu = document.body; // To potentially prevent scrolling when menu open
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            // Optional: Lock body scroll when menu is open
+            // bodyForMenu.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        function closeMenu() {
+             if (navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                // bodyForMenu.style.overflow = 'auto'; // Ensure scroll is re-enabled
+             }
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        // Close menu if clicking outside of it (optional)
+        // document.addEventListener('click', function(event) {
+        //     if (!header.contains(event.target) && navLinks.classList.contains('active')) {
+        //         closeMenu();
+        //     }
+        // });
+
+
+        // --- About Section Slider ---
+        const slidesContainer = document.getElementById('slides');
+        if (slidesContainer) { // Check if slider exists
+            const slides = slidesContainer.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentSlideIndex = 0;
+
+            function showSlide(index) {
+                if (index >= totalSlides) currentSlideIndex = 0;
+                else if (index < 0) currentSlideIndex = totalSlides - 1;
+                else currentSlideIndex = index;
+
+                const offset = -currentSlideIndex * 100;
+                slidesContainer.style.transform = `translateX(${offset}%)`;
+
+                slides.forEach((slide, i) => slide.classList.toggle('active', i === currentSlideIndex));
+            }
+
+            window.nextSlide = () => showSlide(currentSlideIndex + 1); // Make globally accessible for onclick
+            window.prevSlide = () => showSlide(currentSlideIndex - 1); // Make globally accessible for onclick
+
+            showSlide(currentSlideIndex); // Initialize
+        }
+
+        // --- Intersection Observer for Animations ---
+        const observerOptions = {
+            root: null, // relative to viewport
+            rootMargin: '0px',
+            threshold: 0.1 // trigger when 10% is visible
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: Stop observing once visible
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Optional: Remove class if you want animation to reverse when scrolling up
+                    // entry.target.classList.remove('is-visible');
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach(el => observer.observe(el));
+
+
+        // --- Loading Icon Logic ---
+        const loader = document.getElementById('loader');
+        const navLinksForLoader = document.querySelectorAll('.nav-link-item'); // Target links/buttons with this class
+
+        navLinksForLoader.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Show loader only for internal hash links
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#') && document.getElementById(href.substring(1))) {
+                    loader.classList.add('active');
+
+                    // Hide loader after a short delay to simulate loading
+                    setTimeout(() => {
+                        loader.classList.remove('active');
+                    }, 750); // Adjust delay (in milliseconds) as needed
+                }
+                // Note: For external links or the donate button leading off-site,
+                // the loader might show briefly before the page unloads, which is acceptable.
+                // Close mobile menu if open
+                closeMenu();
+            });
+        });
+// --- New About Section Logic ---
+const aboutSelectors = document.querySelectorAll('.about-selector');
+        const aboutTextBlocks = document.querySelectorAll('.about-text-block');
+        const aboutTextDisplay = document.getElementById('about-text-display');
+        const aboutImage = document.getElementById('about-image'); // Optional: if you want to change image
+        const aboutSection = document.getElementById('about'); // For hover pause
+
+        let currentAboutIndex = 0;
+        let aboutInterval;
+        const aboutIntervalTime = 8000; // 8 seconds
+
+        // Array of images corresponding to indices (optional)
+        const aboutImages = ['slide1.jpg', 'slide2.jpg', 'slide3.jpg'];
+
+        function showAboutContent(index) {
+            // Validate index
+             if (index < 0 || index >= aboutSelectors.length) {
+                console.error("Invalid index for about content:", index);
+                return;
+             }
+
+            // Update Image (Optional)
+            if (aboutImage && aboutImages[index]) {
+                aboutImage.src = aboutImages[index];
+            }
+
+            // Update Selector Active State
+            aboutSelectors.forEach((selector, i) => {
+                selector.classList.toggle('active', i === index);
+            });
+
+            // Update Text Block Active State
+            aboutTextBlocks.forEach((block, i) => {
+                block.classList.toggle('active', i === index);
+            });
+
+            currentAboutIndex = index; // Update current index
+        }
+
+        function startAboutInterval() {
+            // Clear existing interval before starting a new one
+            clearInterval(aboutInterval);
+            aboutInterval = setInterval(() => {
+                let nextIndex = (currentAboutIndex + 1) % aboutSelectors.length; // Loop back to 0
+                showAboutContent(nextIndex);
+            }, aboutIntervalTime);
+        }
+
+        // Add click listeners to selectors
+        aboutSelectors.forEach(selector => {
+            selector.addEventListener('click', () => {
+                const index = parseInt(selector.getAttribute('data-index'));
+                showAboutContent(index);
+                startAboutInterval(); // Reset interval on manual click
+            });
+        });
+
+        // Pause interval on hover (optional but recommended)
+        if (aboutSection) {
+            aboutSection.addEventListener('mouseenter', () => {
+                clearInterval(aboutInterval);
+            });
+
+            aboutSection.addEventListener('mouseleave', () => {
+                startAboutInterval();
+            });
+        }
+        // Replace the existing gallery JavaScript in the <script> section
+// --- Gallery Lightbox Functionality ---
+const galleryItems = document.querySelectorAll('.gallery-item');
+const lightbox = document.getElementById('gallery-lightbox');
+const lightboxImage = document.getElementById('lightbox-image');
+const lightboxClose = document.getElementById('lightbox-close');
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
+const galleryGrid = document.getElementById('gallery-grid');
+let currentGalleryIndex = 0;
+
+function openLightbox(index) {
+    currentGalleryIndex = index % (galleryItems.length / 2); // Adjust for duplicate set
+    const fullImage = galleryItems[currentGalleryIndex].getAttribute('data-full');
+    lightboxImage.src = fullImage;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+    galleryGrid.style.animationPlayState = 'paused'; // Pause scrolling
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Restore scrolling
+    galleryGrid.style.animationPlayState = 'running'; // Resume scrolling
+}
+
+function showPrevImage() {
+    currentGalleryIndex = (currentGalleryIndex - 1 + galleryItems.length / 2) % (galleryItems.length / 2);
+    lightboxImage.src = galleryItems[currentGalleryIndex].getAttribute('data-full');
+}
+
+function showNextImage() {
+    currentGalleryIndex = (currentGalleryIndex + 1) % (galleryItems.length / 2);
+    lightboxImage.src = galleryItems[currentGalleryIndex].getAttribute('data-full');
+}
+
+// Event Listeners
+galleryItems.forEach((item, index) => {
+    item.addEventListener('click', () => openLightbox(index));
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxPrev.addEventListener('click', showPrevImage);
+lightboxNext.addEventListener('click', showNextImage);
+
+// Close lightbox when clicking outside the image
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft') showPrevImage();
+    else if (e.key === 'ArrowRight') showNextImage();
+    else if (e.key === 'Escape') closeLightbox();
+});
+
+        // Initialize the first view and start the interval
+        showAboutContent(0); // Show the first item initially
+        startAboutInterval(); // Start auto-advancing
+
+
+       
+    </script>
+</body>
+</html>
+</body>
+</html>
+>>>>>>> 1a4a722f0852d50e98245ec8ab631f33a1fa16a2
